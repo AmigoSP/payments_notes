@@ -1,0 +1,16 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+
+{% block body_content %}
+
+    {% for email in all_emails %}
+        <li><h4>{{ email.title }}</h4></li>
+        <p>{{ email.body|safe }}</p>
+        {% for attach in email.attachments %}
+            <a href="{% static attach.full_name %}">{{ attach.clear_name }}</a>
+        {% endfor %}
+    {% endfor %}
+
+
+{% endblock %}
